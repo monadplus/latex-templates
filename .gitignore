@@ -4,4 +4,8 @@
 *.bbl
 *.blg
 *.pdf
+*.glo
+*.ist
+*.lof
+*.toc
 _minted-*

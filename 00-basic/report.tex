@@ -1,4 +1,5 @@
-\documentclass[12pt, a4paper]{article}
+\documentclass[12pt, a4paper]{article} % book, report, article, letter, slides
+                                       % letterpaper/a4paper, 10pt/11pt/12pt, twocolumn/twoside/landscape/draft
 
 %%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%%
 
@@ -16,9 +17,19 @@
 
 \usepackage{abstract}       % Abstract
 
-\usepackage{xcolor}         % Colours \definecolor, \color{codegray}
+\usepackage{tocbibind}      % Adds the bibliography to the table of contents (automatically)
+
+\usepackage{graphicx}       % Images
+\graphicspath{ {./images/} }
+
+% \usepackage[document]{ragged2e}  % Left-aligned (whole document)
+% \begin{...} ... \end{...}   flushleft, flushright, center
+
+%%%%%%%%%%%%%%%% CODE %%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{minted}         % Code listing
+% \mint{html}|<h2>Something <b>here</b></h2>|
+% \inputminted{octave}{BitXorMatrix.m}
 
 %\begin{listing}[H]
   %\begin{minted}[xleftmargin=20pt,linenos,bgcolor=codegray]{haskell}
@@ -27,13 +38,33 @@
   %\label{lst:example} % You can reference it by \ref{lst:example}
 %\end{listing}
 
+%%%%%%%%%%%%%%%% COLOURS %%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xcolor}         % Colours \definecolor, \color{codegray}
+\definecolor{codegray}{rgb}{0.9, 0.9, 0.9}
+% \color{codegray} ... ...
+% \textcolor{red}{easily}
+
 %%%%%%%%%%%%%%%% CONFIG %%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\absnamepos}{flushleft}
 \setlength{\absleftindent}{0pt}
 \setlength{\absrightindent}{0pt}
 
-\definecolor{codegray}{rgb}{0.9, 0.9, 0.9}
+%%%%%%%%%%%%%%%% GLOSSARIES %%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{glossaries}
+
+%\makeglossaries % before entries
+
+%\newglossaryentry{latex}{
+    %name=latex,
+    %description={Is a mark up language specially suited
+    %for scientific documents}
+%}
+
+% Referene to a glossary \gls{latex}
+% Print glossaries \printglossaries
 
 %%%%%%%%%%%%%%%% HEADER %%%%%%%%%%%%%%%%%%%%%
 
@@ -56,6 +87,8 @@
 
 \maketitle
 
+\tableofcontents
+
 \begin{abstract}
 \noindent
   TODO
@@ -68,11 +101,46 @@
 
 \subsubsection{c}\label{c}
 
-This is a bibliography cite\cite{einstein}
+Na\"ive. $\hat{y} = x + 1$
+
+This is a bibliography cite\cite{einstein}.
+
+{\tiny Large}
+{\scriptsize Large}
+{\footnotesize Large}
+{\small Large}
+{\large \textrm{Very descriptive text.}}
+{\large \textsf{Very descriptive text.}}
+{\large \texttt{Very descriptive text.}}
+
+This is a footnote\footnote{my first footnote}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{cat}  % [width=\textwidth, height=4cm],
+  \caption{Example of a cat}
+  \label{fig:cat}
+\end{figure}
+
+This is a very cute cat, figure \ref{fig:cat}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ |c|c|c| }
+ \hline
+ cell1 & cell2 & cell3 \\
+ cell4 & cell5 & cell6 \\
+ cell7 & cell8 & cell9 \\
+ \hline
+\end{tabular}
+\end{center}
+\caption{Table to test captions and labels}
+\label{table:1}
+\end{table}
 
 %%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%
 
-\bibliographystyle{unsrt}
+\bibliographystyle{unsrt} % abbrv, aplha, plain, abstract, apa, unsrt,
 \bibliography{refs}
 
 \end{document}
