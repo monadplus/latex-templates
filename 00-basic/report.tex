@@ -10,6 +10,9 @@
 \usepackage{amsmath}        % Math
 \usepackage{amsthm}         % Math, \newtheorem, \proof, etc
 \usepackage{amssymb}        % Math, extended collection
+\newtheorem{theorem}{Theorem}[section]     % \begin{theorem}\label{t:label}  \end{theorem}<Paste>
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
 
 \usepackage{hyperref}       % Hyperlinks \url{url} or \href{url}{name}
 
@@ -37,6 +40,8 @@
   %\caption{Example of a listing.}
   %\label{lst:example} % You can reference it by \ref{lst:example}
 %\end{listing}
+
+\newcommand{\code}[1]{\texttt{#1}} % Define \code{foo.hs} environment
 
 %%%%%%%%%%%%%%%% COLOURS %%%%%%%%%%%%%%%%%%%%%
 
