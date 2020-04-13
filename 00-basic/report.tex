@@ -10,9 +10,12 @@
 \usepackage{amsmath}        % Math
 \usepackage{amsthm}         % Math, \newtheorem, \proof, etc
 \usepackage{amssymb}        % Math, extended collection
+\usepackage{bm}             % $\bm{D + C}$
 \newtheorem{theorem}{Theorem}[section]     % \begin{theorem}\label{t:label}  \end{theorem}<Paste>
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
 
 \usepackage{hyperref}       % Hyperlinks \url{url} or \href{url}{name}
 
@@ -24,6 +27,8 @@
 
 \usepackage{graphicx}       % Images
 \graphicspath{ {./images/} }
+
+\usepackage[vlined,ruled]{algorithm2e} % pseudo-code
 
 % \usepackage[document]{ragged2e}  % Left-aligned (whole document)
 % \begin{...} ... \end{...}   flushleft, flushright, center
@@ -71,6 +76,15 @@
 % Referene to a glossary \gls{latex}
 % Print glossaries \printglossaries
 
+\usepackage[acronym]{glossaries} %
+
+% \acrshort{name}
+% \acrfull{name}
+\newacronym{kcol}{$k$-COL}{$k$-coloring problem}
+\newacronym{scol}{SEARCH-$k$-COL}{Search $k$-coloring problem}
+\newacronym{2col}{$2$-COL}{$2$-coloring problem}
+\newacronym{e2sat}{$E2$-SAT}{Exactly 2-SAT}
+
 %%%%%%%%%%%%%%%% HEADER %%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{fancyhdr}
@@ -82,8 +96,13 @@
 
 %%%%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%%%
 
-\title{todo}
-\author{todo}
+\title{%
+  TODO
+}
+\author{%
+  Arnau Abella \\
+  \large{Universitat Polit\`ecnica de Catalunya}
+}
 \date{\today}
 
 %%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%%
@@ -105,6 +124,31 @@
 \subsection{b}\label{b}
 
 \subsubsection{c}\label{c}
+
+\begin{algorithm}[H]
+  \SetAlgoNoLine
+  \SetKwInOut{Input}{Input}
+  \SetKwInOut{Output}{Output}
+  \Input{Given the graph $G = \langle V, E \rangle$ and $k$ colors.}
+  \Output{A solution $a := a_1,\dots,a_{|V|}$ of \acrshort{scol}, $a_i = \{1..k\}$ \\ or $UNSAT$.}
+  \BlankLine
+  \For(\tcp*[f]{$|V|$ times}){$i \leftarrow 1$ \KwTo $|V|$}{
+    \For(\tcp*[f]{$|K|$ times}){$j \leftarrow 1$ \KwTo $|k|$}{
+      \tcp{Each assignment is a copy of the vector $a$}
+      \tcp{At most $|v|^{|k|}$ copies}
+      $a := (a_1,\dots,a_{i-1}, a_i = j)$;
+    }
+    \If{$i = |V|$}{
+      Test if $x := (x_1 = a_1, \dots, x_n = a_{|V|})$ is a valid assignment using \acrshort{kcol}; \tcp{p(n)-time}
+      If it is a valid assignment, then \emph{halt} and return $a$;
+     }
+  }
+  return $UNSAT$;
+  \caption{Na\"ive \acrshort{scol} Algorithm}
+  \label{scol}
+\end{algorithm}
+
+\newpage
 
 Na\"ive. $\hat{y} = x + 1$
 
