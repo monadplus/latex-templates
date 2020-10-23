@@ -1,3 +1,6 @@
 ### LaTeX Templates
 
-- [Basic](./00-basic/)
+Basic templates:
+
+- [Basic 00](./00-basic/)
+- [Basic 01](./01-basic/)
