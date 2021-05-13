@@ -1,13 +1,14 @@
-.PHONY : clean cleanpdf cleandist all
+.PHONY : all report.pdf clean cleanpdf cleandist
 
 TARGET=report
 
 all: report.pdf
 
-report.pdf: $(wildcard *.tex) $(wildcard *.bib)
+report.pdf: clean $(wildcard *.tex) $(wildcard *.bib)
 	- pdflatex -halt-on-error -shell-escape $(TARGET)
 	- bibtex  $(TARGET)
 	- pdflatex -halt-on-error -shell-escape $(TARGET)
+	- bibtex  $(TARGET)
 	pdflatex -halt-on-error -shell-escape $(TARGET)
 
 clean:

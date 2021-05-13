@@ -1,6 +1,5 @@
 ### LaTeX Templates
 
-Basic templates:
+Templates:
 
-- [Basic 00](./00-basic/)
-- [Basic 01](./01-basic/)
+- [Report](./report/)
