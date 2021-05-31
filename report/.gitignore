@@ -9,3 +9,4 @@
 *.lof
 *.toc
 _minted-*
+.auctex-auto
