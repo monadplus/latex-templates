@@ -1,0 +1,136 @@
+\documentclass[xcolor=pdftex,dvipsnames,table]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Madrid}
+  \usecolortheme{seagull}
+  \setbeamercovered{dynamic} %invisible,transparent,dynamic,highly dynamic
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsfonts,amssymb,amscd,amsthm, bm, stmaryrd}
+\usepackage{listings}
+\usepackage[cache=false,section]{minted}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+\usepackage{xcolor,colortbl}
+
+% \usepackage{tikz}
+% \usetikzlibrary{external, automata, arrows.meta, positioning, calc}
+% \tikzexternalize[shell escape=-shell-escape,mode=graphics if exists, prefix=../thesis/tikz/cache/]
+% \newcommand{\inputtikz}[1]{%
+%   \tikzsetnextfilename{#1}%
+%   \input{../thesis/tikz/#1.tex}
+% }
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%
+
+\title{todo}
+\subtitle{todo}
+\author{Arnau Abella}
+\institute[UPC]{%
+  {\tiny %
+    \textit{Supervisors:}\\
+    Sergi Nadal, Universitat Politècnica de Catalunya\\
+    Stijn Vansummeren, UHasselt – Hasselt University\\
+  }
+  \vspace{10pt}
+  \textrm{\scriptsize%
+    Master in innovation and research in informatics\\
+    \vspace{5pt}
+    Facultat d’Informàtica de Barcelona (FIB)\\
+    Universitat Politècnica de Catalunya (UPC)\\
+  }
+}
+\date{\tiny \today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+      \frametitle{Table of Contents}
+      \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+\begin{frame}[fragile]{Introduction}
+  \begin{block}{\emph{Complex Event Recognition (CER)}}
+    Identifying collections of events that collectively satisfy some pattern in high-velocity streams. \cite{core}
+  \end{block}
+
+  \begin{block}{Features}
+    Allow expressing patterns based on:
+   \begin{itemize}
+     \item Content
+     \item Position in the stream
+     \item Order w.r.t other events
+   \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Introduction}
+  \begin{example}
+    A stream produced by wireless sensors placed in a warehouse, whose main objective is to detect fires.
+    \begin{figure}[H]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c}\hline
+        type  &$H$&$T$&$H$&$H$&$T$&$H$&$H$&$T$&$T$ & \ldots \\ \hline
+        id  & 1 & 1 & 2 & 1 & 2 & 2 & 1 & 1 & 1 & \multirow{2}{*}{\ldots} \\
+        val & 50 & 24& 49& 24& 24& 42& 23& 40& 45\\ \hline
+        timestamp & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & \ldots \\ \hline
+      \end{tabular}
+    \end{figure}
+  \end{example}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Conclusions \& future work}
+  \begin{block}{Future Work}
+   \begin{itemize}
+     \item Extend our framework with a generic rewrite and refine algorithms.
+     \pause
+     \item Extend our distributed evaluation algorithm to take into account time windows.
+   \end{itemize}
+  \end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[c]{ }
+  \centering
+  \huge Questions ?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Bibliography}
+  \bibliographystyle{unsrt}
+  \bibliography{bibliography}
+\end{frame}
+
+\end{document}
+

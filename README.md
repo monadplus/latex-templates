@@ -3,3 +3,4 @@
 Templates:
 
 - [Report](./report/)
+- [Slides](./slides/)
